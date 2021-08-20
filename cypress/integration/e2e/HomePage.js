@@ -5,7 +5,7 @@ describe('Home page test ',function(){
 
     before(function(){
 
-        cy.visit('http://advantageonlineshopping.com/#/')
+        cy.visit(Cypress.env('url'))
         cy.fixture('loadData').then(function(data){
             this.data=data
         
