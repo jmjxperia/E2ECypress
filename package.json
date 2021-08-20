@@ -1,0 +1,23 @@
+{
+  "name": "e2ecypress",
+  "version": "1.0.0",
+  "description": "Sample cypress automation framework",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^8.3.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmjxperia/E2ECypress.git"
+  },
+  "author": "Jathin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jmjxperia/E2ECypress/issues"
+  },
+  "homepage": "https://github.com/jmjxperia/E2ECypress#readme"
+}
