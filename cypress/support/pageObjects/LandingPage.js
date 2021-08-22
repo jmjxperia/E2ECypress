@@ -19,6 +19,16 @@ class LandingPage{
     {
         return cy.get('#sign_in_btnundefined')
     }
+
+    verifyUser()
+    {
+        return cy.get('.hi-user.containMiniTitle.ng-binding')
+    }
+
+    clickSignOut()
+    {
+        return cy.get('#loginMiniTitle > [translate="Sign_out"]')
+    }
 }
 
 export default LandingPage;

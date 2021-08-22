@@ -19,5 +19,10 @@ describe('Home page test ',function(){
         landing.enterUsername().type(this.data.username)
         landing.enterPassword().type(this.data.password)
         landing.clickSignIn().click()
+        landing.verifyUser().should('have.text',this.data.username)
+        landing.clickLoginHeader().click()
+        landing.clickSignOut().click()
+        landing.verifyUser().should('not.be.visible')
+
     })
 })
