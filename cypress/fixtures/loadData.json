@@ -1,4 +1,6 @@
 {
   "username": "testuser1",
-  "password": "qwertY1"
+  "password": "qwertY1",
+  "email": "woxip@dropjar.com",
+  "subject": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus commodo quam id tortor laoreet,in rutrum quam volutpat. Fusce condimentum mollis sollicitudin."
 }

@@ -29,6 +29,37 @@ class LandingPage{
     {
         return cy.get('#loginMiniTitle > [translate="Sign_out"]')
     }
+
+    clickContactUs()
+    {
+        return cy.get("[translate='CONTACT_US']")
+    }
+
+    selectCategory()
+    {
+        return cy.get("select[name='categoryListboxContactUs']")
+    }
+
+    selectProduct()
+    {
+        return cy.get("select[name='productListboxContactUs']")
+    }
+
+    enterEmail()
+    {
+        return cy.get("input[name='emailContactUs']")
+    }
+
+    enterSubject()
+    {
+        return cy.get("textarea[name='subjectTextareaContactUs']")
+    }
+
+    clickSend()
+    {
+        return cy.get('#send_btnundefined')
+    }
+
 }
 
 export default LandingPage;
