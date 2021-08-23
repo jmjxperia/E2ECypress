@@ -25,6 +25,11 @@ class ProductPage{
         return cy.get('#checkOutPopUp')
     }
 
+    getCartCount()
+    {
+        return cy.get('#shoppingCartLink > .cart')
+    }
+
 }
 
 export default ProductPage;

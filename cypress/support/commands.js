@@ -23,3 +23,12 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('selectProduct', (productName) => {
+cy.get(".productName.ng-binding").each(($el,index,$list)=>{
+    if($el.text().includes(productName))
+    {
+        cy.get("li[ng-repeat*='product in']").eq(index).click()
+    }
+})
+})

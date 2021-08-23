@@ -19,20 +19,39 @@ describe('Home page test ',function(){
         landing.clickSpeakers().click()
         cy.url().should('include', 'Speakers')
         cy.get("li[ng-repeat*='product in']").should('have.length',7)
-        cy.get(".productName.ng-binding").each(($el,index,$list)=>{
-            if($el.text().includes('HP Roar Wireless Speaker'))
-            {
-                cy.get("li[ng-repeat*='product in']").eq(index).click()
-            }
-        })
+        cy.selectProduct('HP Roar Wireless Speaker')
         for(var i=0;i<2;i++)
         {
             product.clickIncrement().click()
         }
         product.quantity().should('have.value',3)
         product.clickAddToCart().click()
+        cy.go('back')
+        cy.selectProduct('Logitech X100 Speaker')
+        product.quantity().should('have.value',1)
+        product.clickAddToCart().click()
+        product.getCartCount().then(function(element){
+            const c=element.text()
+            expect(Number(c)).to.equal(4)
+        })
         product.clickMenuCart().invoke('show')
         product.clickCheckout().click()
-
+        var sum=0
+        cy.get('td:nth-child(3)').each(($el,index,$list)=>{
+            cy.log($el.text()) //to log the prices
+            const actualText=$el.text()
+            var res=actualText.split("$")
+            res=res[1].trim()
+            cy.log(res) //to log if $ has gone
+            sum=Number(sum)+Number(res)
+        }).then(function() {
+            cy.log(sum)
+        })
+        cy.get('.roboto-medium.totalValue.ng-binding').then(function(element) {
+            const amount=element.text()
+            var res=amount.split("$")
+            var total=res[1].trim()
+            expect(Number(total)).to.equal(Number(sum))
+        })
     })
 })
