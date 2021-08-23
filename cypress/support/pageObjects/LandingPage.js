@@ -60,6 +60,11 @@ class LandingPage{
         return cy.get('#send_btnundefined')
     }
 
+    clickSpeakers()
+    {
+        return cy.get('#speakersTxt')
+    }
+
 }
 
 export default LandingPage;
