@@ -3,7 +3,7 @@ import LandingPage from '../../support/pageObjects/LandingPage'
 import ProductPage from '../../support/pageObjects/ProductPage'
 import OrderPage from '../../support/pageObjects/OrderPage'
 
-describe('Home page test ',function(){
+describe('Place Order test ',function(){
     const landing=new LandingPage()
     const product=new ProductPage()
     const order=new OrderPage()
@@ -56,7 +56,7 @@ describe('Home page test ',function(){
             expect(Number(total)).to.equal(Number(sum))
         })
     })
-    
+
     it('check placing the order',function(){
         landing.clickSpeakers().click()
         cy.url().should('include', 'Speakers')
