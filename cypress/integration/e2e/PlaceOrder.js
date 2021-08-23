@@ -1,10 +1,12 @@
 /// <reference types="cypress" />
 import LandingPage from '../../support/pageObjects/LandingPage'
 import ProductPage from '../../support/pageObjects/ProductPage'
+import OrderPage from '../../support/pageObjects/OrderPage'
 
 describe('Home page test ',function(){
     const landing=new LandingPage()
     const product=new ProductPage()
+    const order=new OrderPage()
 
     this.beforeEach(function(){
 
@@ -53,5 +55,29 @@ describe('Home page test ',function(){
             var total=res[1].trim()
             expect(Number(total)).to.equal(Number(sum))
         })
+    })
+    
+    it('check placing the order',function(){
+        landing.clickSpeakers().click()
+        cy.url().should('include', 'Speakers')
+        cy.get("li[ng-repeat*='product in']").should('have.length',7)
+        cy.selectProduct('HP Roar Wireless Speaker')
+        for(var i=0;i<2;i++)
+        {
+            product.clickIncrement().click()
+        }
+        product.clickAddToCart().click()
+        product.clickMenuCart().invoke('show')
+        product.clickCheckout().click()
+        order.enterUserName().type(this.data.username)
+        order.enterPassword().type(this.data.password)
+        order.clickLogin().click()
+        order.clickNext().click()
+        order.clickPayNow().should('be.disabled')
+        order.enterSafePayUsername().type(this.data.safeusername)
+        order.enterSafePayPassword().type(this.data.safepassword)
+        order.checkboxSafePay().uncheck().should('not.be.checked')
+        order.clickPayNow().click()
+        order.orderMessage().should('have.text',"Thank you for buying with Advantage")
     })
 })
